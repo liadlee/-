@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法练习题</title>
+</head>
+
+<body>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/array-methods#jiang-borderleftwidth-zhuan-huan-cheng-borderleftwidth"
+                target="_blank">将 border-left-width 转换成 borderLeftWidth
+            </a></h2>
+        <img src="../img/将 border-left-width 转换成 borderLeftWidth.png" alt="">
+
+    </section>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/array-methods#guo-lv-fan-wei" target="_blank">过滤范围
+            </a></h2>
+
+        <img src="../img/过滤范围.png" alt="">
+        <div class="xinde">
+            注意区分不同方法的使用场景
+        </div>
+
+    </section>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/array-methods#ying-she-dao-names" target="_blank">映射到 names
+            </a></h2>
+
+        <img src="../img/映射到 names.png" alt="">
+        <div class="xinde">
+
+        </div>
+
+    </section>
+    <!--    prac1:
+    <script>
+
+        // camelize("background-color") == 'backgroundColor';
+        // camelize("list-style-image") == 'listStyleImage';
+        // camelize("-webkit-transition") == 'WebkitTransition';
+        alert(camelize("background-color"))
+        alert(camelize("list-style-image"))
+        alert(camelize("-webkit-transition"))
+        way01: function camelize(str) {
+            let strarray = str.split('-');
+            for (let i = 1; i < strarray.length; i++) {
+                strarray[i] = strarray[i][0].toUpperCase() + strarray[i].slice(1)
+            }
+            return strarray.join("")
+        }
+        way02: function camelize(str) {
+            str.split('-').map((word, index) => index == 0 ? word : word[0].toUpperCase + word.slice(1));
+        }
+    </script> -->
+    <!--     prac2:
+    <script>
+      <p>写一个函数 filterRange(arr, a, b)，该函数获取一个数组 arr，在其中查找数值大于或等于 a，</p>
+         <p> 且小于或等于 b 的元素，并将结果以数组的形式返回。</p>
+         <p> 该函数不应该修改原数组。它应该返回新的数组。</p> 
+        function filterRange(arr, a, b) {
+            // let newarr=arr.map(item => (a <= item && item <= b))
+            let newarr = arr.filter(item => (a <= item && item <= b))
+            return newarr
+        }
+        let arr = [5, 3, 8, 1];
+
+        let filtered = filterRange(arr, 1, 4);
+
+        alert(filtered); // 3,1（匹配的值）
+
+        alert(arr); // 5,3,8,1（未经改动的数组中的值）
+    </script>  -->
+    <!-- prac3:映射到 names 
+    <script>
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 28 };
+
+        let users = [john, pete, mary];
+
+        let names = users.map(item => item.name)
+
+          //  alert(names); // John, Pete, Mary
+    </script>-->
+    <!--prac4 :映射到对象
+    你有一个 user 对象数组，每个对象都有 name，surname 和 id。
+编写代码以该数组为基础，创建另一个具有 id 和 fullName 的对象数组，其中 fullName 由 name 和 surname 生成。
+
+错解： let usersMapped = users.map(item =>{ 
+                this={}
+                this.fullName=item.name + item.surname;
+                this.id=item.id;
+                return this
+            });
+分析：受到构造函数被执行时的影响，尝试使用此方式创建对象并返回，执行错误。
+解答中是使用字面量的方式创建的对象，此方式相当于一句代码，不需要考虑多行箭头函数的返回问题，此方式执行的结果就是创建了一个对象，直接返回
+-->
+    <!--   <script>
+        let john = { name: "John", surname: "Smith", id: 1 };
+        let pete = { name: "Pete", surname: "Hunt", id: 2 };
+        let mary = { name: "Mary", surname: "Key", id: 3 };
+
+        let users = [john, pete, mary];
+
+        let usersMapped = users.map(item => (
+            {
+                fullName: item.name + item.surname,
+                id: item.id
+            }
+        ));
+        /*
+        usersMapped = [
+          { fullName: "John Smith", id: 1 },
+          { fullName: "Pete Hunt", id: 2 },
+          { fullName: "Mary Key", id: 3 }
+        ]
+        */
+
+        alert(usersMapped[0].id) // 1
+        alert(usersMapped[0].fullName) // John Smith
+    </script> -->
+    prac05:按年龄对用户排序:
+    编写函数 sortByAge(users) 获得对象数组的 age 属性，并根据 age 对这些对象数组进行排序。
+    原解思路：写循环，然后进行冒泡排序，双重循环
+    秒杀解： arr.sort((a,b)=>a.age-b.age);
+    <script>
+
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 28 };
+
+        let arr = [pete, john, mary];
+
+        sortByAge(arr);
+
+        // now: [john, mary, pete]
+        alert(arr[0].name); // John
+        alert(arr[1].name); // Mary
+        alert(arr[2].name); // Pete
+        function sortByAge (arr){
+
+        }
+    </script>
+</body>
+
+
+</html>

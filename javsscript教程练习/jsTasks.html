@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://zh.javascript.info/logical-operators"></a>
+    <div class="task__header">
+        <div class="task__title-wrap">
+            <h3 class="task__title">
+                <a class="main__anchor" href="#deng-lu-yan-zheng" name="deng-lu-yan-zheng">登陆验证</a>
+            </h3>
+            <a class="task__open-link" href="/task/check-login" target="_blank"></a>
+        </div>
+        <div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 3</span></div>
+        <div class="task__content">
+            <div class="task__formatted">
+                <p>实现使用 <code>prompt</code> 进行登陆校验的代码。</p>
+                <p>如果访问者输入 <code>"Admin"</code>，那么使用 <code>prompt</code> 引导获取密码，如果输入的用户名为空或者按下了 <kbd
+                        class="shortcut">Esc</kbd> 键 —— 显示 “Canceled”，如果是其他字符串 —— 显示 “I don’t know you”。</p>
+                <p>密码的校验规则如下：</p>
+                <ul>
+                    <li>如果输入的是 “TheMaster”，显示 “Welcome!”，</li>
+                    <li>其他字符串 —— 显示 “Wrong password”，</li>
+                    <li>空字符串或取消了输入，显示 “Canceled.”。</li>
+                </ul>
+                <p>流程图：</p>
+                <figure>
+                    <div class="image" style="width:599px">
+                        <div class="image__ratio" style="padding-top:82.30383973288815%"></div>
+                        <object type="image/svg+xml" data="/task/check-login/ifelse_task.svg" class="image__image"
+                            width="599" height="493">
+                            <img src="/task/check-login/ifelse_task.svg" alt="" width="599" height="493">
+                        </object>
+                    </div>
+                </figure>
+                <p>请使用嵌套的 <code>if</code> 块。注意代码整体的可读性。</p>
+                <p>提示：将空字符串输入，prompt 会获取到一个空字符串 <code>''</code>。Prompt 运行过程中，按下 <kbd class="shortcut">ESC</kbd> 键会得到
+                    <code>null</code>。
+                </p>
+            </div>
+            <script>
+                let res = prompt('请输入用户名', '');
+                if (res == 'Admin') {
+                    let pass = prompt('input your password', '');
+                    if (pass == 'TheMaste') {
+                        alert('Welcome!')
+                    } else if (pass == null || pass == '') {
+                        alert('canceled!')
+                    } else {
+                        alert('Wrong password!')
+                    }
+                } else if (res == null || res == '') {
+                    alert('canceled!')
+                } else {
+                    alert('i donot know you!')
+                }
+
+            </script>
+</body>
+
+</html>

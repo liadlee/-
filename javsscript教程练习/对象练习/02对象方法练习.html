@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法练习</title>
+    <link rel="stylesheet" href="../../css/base.css">
+
+</head>
+
+<body>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/object-methods#zai-dui-xiang-zi-mian-liang-zhong-shi-yong-this"
+                target="_blank">在对象字面量中使用this
+            </a></h2>
+        <img src="../img/在对象字面量中使用this.png" alt="">
+    </section>
+    <section class="question ">
+        <h2><a href="https://zh.javascript.info/object-methods#chuang-jian-yi-ge-ji-suan-qi" target="_blank">创建一个计算器
+            </a></h2>
+        <div class="item">
+            <img src="../img/创建一个计算器.png" alt="">
+        </div>
+    </section>
+
+</body>
+<script>
+    // 创建一个有三个方法的 calculator 对象：
+
+    // read() 提示输入两个值，并将其保存为对象属性。
+    // sum() 返回保存的值的和。
+    // mul() 将保存的值相乘并返回计算结果。
+    let calculator = {
+        read :function(){
+           let str = prompt('请输入两个值用空格分开');
+           if(str){
+           let nums = str.split(' ')
+            this.a = nums[0];
+            this.b = nums[1];
+            }else{
+                alert('error')
+            }
+        },
+        sum(){
+            return (+this.a) +(+this.b)
+        }
+    };
+    calculator.mul=function(){
+        return this.a * this.b
+    }
+    calculator.read();
+    alert(calculator.sum());
+    alert(calculator.mul());
+    console.log("三个方法使用了三种不同的方式创建，一次编写完成，我真厉害");
+</script>
+
+</html>

@@ -1,0 +1,21 @@
+.question{
+    width: 100%;
+    height: auto;
+    border: 1px solid gray;
+    
+    img {
+        width: 50%;
+    }
+}
+.redx{
+    display: block;
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;        
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+
+    }
+}

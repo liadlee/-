@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map和set练习题</title>
+</head>
+
+<body>
+    prac:过滤字谜（anagrams）
+    重要程度: 4
+    具有相同数量相同字母但是顺序不同的单词保留一个
+    使用map，利用键的唯一性，对每个单词进行重组作为键，保存原始值，将原始值作为迭代对象变成数组
+    ！！不要忘了字符串打散排序后需要转换为字符串，数组作为key不能排重
+    <script>
+        let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+        function aclean(arr) {
+            let acleaned = new Map();
+            arr.forEach(word => {
+                let wordsorted = word.toLowerCase().split("").sort().join("");
+                // console.log(wordsorted);
+                acleaned.set(wordsorted,word)
+            });
+            // console.log(acleaned);
+           return Array.from(acleaned.values())
+        }
+        alert(aclean(arr)); // "nap,teachers,ear" or "PAN,cheaters,era"
+    </script>
+</body>
+
+</html>

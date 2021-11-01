@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>为 counter 添加 set 和 decrease 方法</title>
+</head>
+
+<body>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/function-object#wei-counter-tian-jia-set-he-decrease-fang-fa"
+                target="_blank">为 counter 添加 set 和 decrease 方法
+            </a></h2>
+        <img src="../img/闭包和函数属性.png" alt="">
+        <!-- <script>
+
+            /*  修改 makeCounter() 代码，使得 counter 可以进行减一和设置值的操作：
+             counter() 应该返回下一个数字（与之前的逻辑相同）。
+             counter.set(value) 应该将 count 设置为 value。
+             counter.decrease() 应该把 count 减 1。
+             P.S. 你可以使用闭包或者函数属性来保持当前的计数，或者两种都写 */
+    // 解法1：使用闭包
+            function makeCounter() {
+                let count = 0;
+                function counter() {
+                    return count++;
+                    /*  错误1
+                        set:function(value) {
+                             count = value;
+                         },
+                         decrease() {
+                             count--;
+                         } 
+                       */
+                }
+                counter.set=value=>count=value;
+                //counter.decrease = () => count--;
+                counter.decrease=function(){  count--}
+                return counter
+                
+            }
+            // let counter = makeCounter();
+            // //alert(counter());
+            // alert(counter.set(4))
+            // // alert(counter());
+            // counter.decrease()
+            // alert(counter());
+    // 解法2：使用属性
+    function makeCounter() {
+                //let count = 0;
+                function counter() {
+                    return counter.count++;
+                }
+                counter.count=0;
+                counter.set=value=>counter.count=value;
+                //counter.decrease = () => count--;
+                counter.decrease=function(){  counter.count--}
+                return counter
+                
+            }
+            let counter = makeCounter();
+            //alert(counter());
+            alert(counter.set(4))
+            // alert(counter());
+            counter.decrease()
+            alert(counter());
+        </script> -->
+    </section>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/settimeout-setinterval#mei-miao-shu-chu-yi-ci"
+                target="_blank">调度练习：每秒输出一次
+            </a></h2>
+        <img src="../img/每秒输出一次.png" alt="">
+        <script>
+           /*  编写一个函数 printNumbers(from, to)，使其每秒输出一个数字，数字从 from 开始，到 to 结束。
+            使用以下两种方法来实现。使用 setInterval。使用嵌套的 setTimeout。 */
+            
+            function printNumbers(from, to){
+                let timer = setInterval(() => {
+                   from<=to ? console.log(from++):clearInterval(timer);
+                }, 1000);
+            }
+            function printNumbers(from, to){
+                let timer = setTimeout(function printnum(){
+                    if(from <= to){
+                        console.log(from++);
+                        timer=setTimeout(printnum,1000)
+                    }else{
+                        clearTimeout(timer)
+                        console.log("ok");
+                    }
+                },1000)
+            }
+            printNumbers(0,5)
+        </script>
+    </section>
+
+</body>
+
+</html>

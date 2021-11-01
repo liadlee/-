@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组操作</title>
+</head>
+
+<body>
+    <h2><a href=" https://zh.javascript.info/array#shu-zu-cao-zuo">数组操作
+        </a></h2>
+    <img src="../img/数组操作.png" alt="">
+
+</body>
+<script>
+    /* 
+创建一个数组 styles，里面存储有 “Jazz” 和 “Blues”。
+将 “Rock-n-Roll” 从数组末端添加进去。
+用 “Classics” 替换掉数组最中间的元素。查找数组最中间的元素的代码应该适用于任何奇数长度的数组。
+去掉数组的第一个值并显示它。
+在数组前面添加 Rap 和 Reggae。 */
+let styles = ['Jazz','Blues'];
+console.log(styles);
+styles.push('Rock-n-Roll');
+console.log(styles);
+styles[Math.floor(styles.length/2)]='Classics';
+console.log(styles);
+console.log(styles.shift());
+styles.unshift('Rap','Reggae')
+console.log(styles);
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装饰器模式和转发</title>
+</head>
+
+<body>
+    <!--  <script>
+        function sayHi() {
+            console.log(this);
+        }
+
+        let user = { name: "John" };
+        let admin = { name: "Admin" };
+
+        // 使用 call 将不同的对象传递为 "this"
+        sayHi.call(user); // John
+        sayHi.call(admin); // Admin
+    </script> -->
+   <!--  <script>
+        let worker = {
+            someMethod() {
+                return 1;
+            },
+
+            slow(x) {
+                alert("Called with " + x);
+                return x * this.someMethod(); // (*)
+            }
+        };
+
+        function cachingDecorator(func) {
+            let cache = new Map();
+            return function (x) {
+                if (cache.has(x)) {
+                    return cache.get(x);
+                }
+                let result = func.call(this, x); // 现在 "this" 被正确地传递了
+                cache.set(x, result);
+                return result;
+            };
+        }
+
+        worker.slow = cachingDecorator(worker.slow); // 现在对其进行缓存
+        alert( worker.slow(2) );
+        </script> -->
+        <section class="question redx">
+            <h2><a href="https://zh.javascript.info/call-apply-decorators#jian-die-zhuang-shi-qi"
+                    target="_blank">间谍装饰器
+                </a></h2>
+            <img src="../img/间谍装饰器.png" alt="">    
+        </section>
+    </body>
+
+</html>

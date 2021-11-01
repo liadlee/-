@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三元运算符？和: 对应的问题</title>
+</head>
+<body>
+    <h1>三元运算符？和: 对应的问题</h1>
+    <h2>首尾对应，第一个？与最后一个：对应</h2>
+    <p>
+        <ul>
+            <li>第一个？与最后一个：对应</li>
+            <li>第一个？与最后一个：间的就是判断为true的情况</li>
+            <li>最后一个：后的就首判断为false的运算</li>
+        </ul>
+       
+        a ? true:false
+        a ? b ? c(bv) : bx : aX
+    </p>
+    <script>
+        let user={
+            // address:{
+            //     street:{
+            //         name:Tom,
+
+            //     }
+            // }
+        }
+        alert(user.address ? user.address.street ? user.address.street.name : 'streetnull' : 'addressnull')
+    </script>
+</body>
+</html>

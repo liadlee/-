@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注意严格模式下才有这个问题</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        let age = prompt("What is your age?", 18);
+
+        // 有条件地声明一个函数
+        if (age < 18) {
+
+            function welcome() {
+                alert("Hello!");
+            }
+
+        } else {
+            function welcome() {
+                alert("Greetings!");
+            }
+
+        }
+
+        // ……稍后使用
+        welcome(); // Error: welcome is not defined
+    </script>
+
+    <!--  
+        推荐函数表达式
+        <script>
+        let welcome;
+        let age = prompt('please input')
+
+        if (age < 18) {
+
+            welcome = function () {
+                alert("Hello!");
+            };
+
+        } else {
+
+            welcome = function () {
+                alert("Greetings!");
+            };
+
+        }
+        welcome(); // 现在可以了
+    </script> -->
+    <!-- 使用函数声明也行，多此一举有些 -->
+    <!-- <script>
+        "use strict"
+        let age = prompt("What is your age?", 18);
+        let welcome;
+        // 有条件地声明一个函数
+        if (age < 18) {
+            welcome = welcome1;
+        } else {
+            welcome = welcome2;
+        }
+        function welcome1() {
+            alert("Hello!");
+        }
+        function welcome2() {
+            alert("Greetings!");
+        }
+        // ……稍后使用
+        alert(welcome)  // Error: welcome is not defined
+    </script> -->
+</body>
+
+</html>

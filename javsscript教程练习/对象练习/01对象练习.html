@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+
+<body>
+    <h2><a href="https://zh.javascript.info/object#ni-hao-dui-xiang">你好对象
+        </a></h2>
+    <img src="../img/你好对象.png" alt="">
+    <h2><a href="https://zh.javascript.info/object#jian-cha-kong-dui-xiang">检查空对象
+        </a></h2>
+    <img src="../img/检查空对象.png" alt="">
+    <h2><a href="https://zh.javascript.info/object#dui-xiang-shu-xing-qiu-he">对象属性求和
+        </a></h2>
+    <img src="../img/对象属性求和.png" alt="">
+    <h2><a href="https://zh.javascript.info/object#jiang-shu-zhi-shu-xing-zhi-du-cheng-yi-2">将数值属性值都乘以 2
+        </a></h2>
+    <img src="../img/将数值属性值都乘以 2.png" alt="">
+</body>
+<script>
+    let user = new Object();
+    user.name = 'John';
+    user.sername = 'Smith';
+    user['name'] = 'Pete'
+    // user.name = 'Pete';
+    delete user.name;
+</script>
+<script>
+    function isEmpty(obj) {
+        for (let key in obj) { //写的时候不用忘记let
+            if (key in obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function isEmpty(obj) {
+        for (let key in obj) {
+            // 如果进到循环里面，说明有属性。
+            return false;
+        }
+        return true;
+    }
+</script>
+<script>
+    let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130
+    }
+    function sumSalary(obj) {
+        let sum = 0;
+        for (let key in obj) {
+            /*  debugger
+             sum += (+obj.key); //undefined ,obj.key --key 不是obj属性
+          */
+            sum += obj[key];
+        }
+        return sum;
+    }
+    alert(sumSalary(salaries))
+</script>
+<script>
+    // 在调用之前
+    let menu = {
+        width: 200,
+        height: 300,
+        title: "My menu"
+    };
+
+    multiplyNumeric(menu);
+    console.log(menu);
+    // 调用函数之后
+    menu = {
+        width: 400,
+        height: 600,
+        title: "My menu"
+    };
+    function multiplyNumeric(obj){
+        for (let key in obj){
+            (typeof(obj[key])=='number')?obj[key] *= 2 :obj[key] ;
+        }
+    }
+</script>
+
+</html>
