@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象练习题</title>
+</head>
+
+<body>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/native-prototypes#gei-han-shu-tian-jia-yi-ge-fdeferms-fang-fa"
+                target="_blank">给函数添加一个 "f.defer(ms)" 方法
+            </a></h2>
+        <!-- <img src="../img/给函数添加一个 "f.defer(ms)" 方法.png" alt=""> -->
+        <script>
+            // 在所有函数的原型中添加 defer(ms) 方法，该方法将在 ms 毫秒后运行该函数
+            // Function.prototype.defer = function (ms) {
+            //     setTimeout(this, ms)
+            // }
+            // 在所有函数的原型中添加 defer(ms) 方法，该方法返回一个包装器，将函数调用延迟 ms 毫秒。
+            Function.prototype.defer = function (ms) {
+                
+                return  (...args)=> {
+                    setTimeout(() => { f.apply(this, args) }, ms)
+                }
+            }
+            function f(a, b) {
+                alert(a + b);
+            }
+
+            f.defer(5000)(1, 2); // 5 秒后显示 3
+          
+        </script>
+    </section>
+</body>
+
+</html>

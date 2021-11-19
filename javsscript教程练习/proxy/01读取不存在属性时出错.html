@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01读取不存在属性时出错</title>
+</head>
+
+<body>
+    <section>
+        <a href="https://zh.javascript.info/proxy#du-qu-bu-cun-zai-de-shu-xing-shi-chu-cuo">读取不存在属性时出错</a>
+        <script>
+            let user = {
+                name: "John"
+            };
+            function wraper(target){
+                return new Proxy(target,{
+                    get(target,propkey,resiver){
+                        if(propkey in target){
+                            return Reflect.get(...arguments)
+                        }else{
+                            throw new ReferenceError(`Property doesn't exist: "${prop}"`)
+                        }
+                    }
+                })
+            }
+            user = wraper(user);
+            alert(user.name); // John
+            alert(user.age); // ReferenceError: Property doesn't exist: "age"
+        </script>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"  id="ipt">
+    <input type="button" id="enter" value="确定">
+    <input type="button" id="clear" value="清空">
+    <ul>
+
+    </ul>
+    <script>
+        let ipt = document.body.querySelector('#ipt')
+        let enter = document.querySelector('#enter')
+        let clear = document.getElementById('clear')
+        let ul = clear.nextElementSibling;
+        enter.addEventListener('click',function(){
+            let li = document.createElement('li')
+            li.textContent= ipt.value;
+            ul.appendChild(li)
+            ipt.value=''   
+        })
+        clear.addEventListener('click',function(){
+                    
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问器属性得一个疑问验证-setter触发得绕过</title>
+</head>
+<!-- 下面的代码不用看
+因为我没验证
+    准备验证的时候发现忽略了一件事
+    访问器属性get set 和普通属性的value是冲突的
+    本来想验证是否可以绕过进行值的变动，但人家就没value！！！
+        下面的代码是学习原型时冲击比较大的有疑惑的代码 -->
+
+<body>
+    <!-- 原题：为什么两只仓鼠都饱了？ -->
+    <a href="https://zh.javascript.info/prototype-inheritance#wei-shi-mo-liang-zhi-cang-shu-du-bao-le">为什么两只仓鼠都饱了？</a>
+    <script>
+       let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster
+};
+
+let lazy = {
+  __proto__: hamster
+};
+
+// 这只仓鼠找到了食物
+speedy.eat("apple");
+alert( speedy.stomach ); // apple
+// *************************************************
+//    疑惑：为什么改变了原型的值
+        // 与原型的继承有关
+        // this.stomach.push()
+            // this.stomach是寻找stomach属性，就是在speedy里寻找的
+            // 但没有找到，由于原型存在，就在原型中找到了stomach属性，且对其调用了push方法
+            // 导致原型的状态改变，直接对数组调用了方法
+            // 与直接赋值有所区别）=）
+// 这只仓鼠也找到了食物，为什么？请修复它。**********
+alert( lazy.stomach ); // apple*************
+    </script>
+</body>
+
+</html>

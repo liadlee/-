@@ -21,7 +21,7 @@
         sayHi.call(user); // John
         sayHi.call(admin); // Admin
     </script> -->
-   <!--  <script>
+    <!--  <script>
         let worker = {
             someMethod() {
                 return 1;
@@ -48,12 +48,145 @@
         worker.slow = cachingDecorator(worker.slow); // 现在对其进行缓存
         alert( worker.slow(2) );
         </script> -->
-        <section class="question redx">
-            <h2><a href="https://zh.javascript.info/call-apply-decorators#jian-die-zhuang-shi-qi"
-                    target="_blank">间谍装饰器
-                </a></h2>
-            <img src="../img/间谍装饰器.png" alt="">    
-        </section>
-    </body>
+    <section class="question redx">
+        <h2><a href="https://zh.javascript.info/call-apply-decorators#jian-die-zhuang-shi-qi" target="_blank">间谍装饰器
+            </a></h2>
+        <img src="../img/间谍装饰器.png" alt="">
+        <!-- 考虑对象方法  <script>
+           /*  创建一个装饰器 spy(func)，它应该返回一个包装器，该包装器将所有对函数的调用保存在其 calls 属性中。
+每个调用都保存为一个参数数组。
+ */
+            function work(a, b) {
+                alert(a + b); // work 是一个任意的函数或方法  !!!即work的参数个数不确定,还有可能的方法--需要传递this
+            }
+           function spy(func){
+                ///接收多个参数
+                function wrapper(...args){
+                    wrapper.calls.push(args);
+                    return func.apply(this,args)
+                }
+                wrapper.calls=[];
+            return wrapper;
+           }
+            work = spy(work);
+
+            work(1, 2); // 3
+            work(4, 5); // 9
+
+            for (let args of work.calls) {
+                alert('call:' + args.join()); // "call:1,2", "call:4,5"
+            }
+        </script> -->
+        <!--       针对work写普通装饰
+       <script>
+        function work(a, b) {
+            console.log(a + b);
+        }
+        function spy(func) {
+            function result(a, b) {
+                result.calls.push([...arguments])
+                //return func.call(this, a, b)
+                return func(a,b)
+            }
+            result.calls = [];
+            return result
+        }
+        work = spy(work)
+        work(1, 2); // 3
+        work(4, 5); // 9
+        console.log(work.calls);
+        // for (let args of work.calls) {
+        //     console.log('call:' + args.join()); // "call:1,2", "call:4,5"
+        // }
+    </script> -->
+    </section>
+
+    <!-- //延时装饰器
+        这个地方注意使用箭头函数的优越性
+            箭头函数没有this和arguments，可以访问到外部的
+            而普通函数则需要增加变量分别保存this 和 arguments
+            不用箭头函数的话，可以这么写：
+
+function defer(f, ms) {
+  return function(...args) {
+    let ctx = this;
+    setTimeout(function() {
+      return f.apply(ctx, args);
+    }, ms);
+  };
+}
+function sayHi(who) {
+  alert('Hello, ' + who);
+}
+let sayHiDeferred = defer(sayHi, 2000);
+sayHiDeferred("John"); // 2 秒后显示：Hello, John
+    创建一个装饰器 delay(f, ms)，该装饰器将 f 的每次调用延时 ms 毫秒。
+    换句话说，delay(f, ms) 返回的是延迟 ms 后的 f 的变体。
+在上面的代码中，f 是单个参数的函数，但是你的解决方案应该传递所有参数和上下文 this。 -->
+    <!--  <script>
+        function f(x) {
+            alert(x);
+        }
+
+        // create wrappers
+
+
+        // 解 
+        function delay(f, ms) {
+            function wrapper() {
+
+                // setTimeout(f.apply(this,arguments), ms);  //定时器里面应该是一个函数
+                setTimeout(() => f.apply(this, arguments), ms);
+
+            }
+            return wrapper;
+            /*return function() {
+               setTimeout(() => f.apply(this, arguments), ms);
+             }; */
+        }
+
+        let f1000 = delay(f, 8000);
+        let f1500 = delay(f, 1500);
+
+        f1000("test1"); // 在 1000ms 后显示 "test"
+        f1500("test"); // 在 1500ms 后显示 "test"
+    </script> -->
+
+
+    <!-- 不明白
+    jiesi即函数是值，而不是对象的引用，函数复制是不是传递的函数的地址
+包装后传入的是function的函数体，使用了user.sayHi()进行执行，点方法存在this
+user.loginOk传入的就是 alert(`${this.name} logged in`)就是没有上下文
+ -->
+    <script>
+        function askPassword(ok, fail) {
+            let password = prompt("Password?", '');
+            if (password == "rockstar") { // ok();
+                console.log(ok);
+            }
+            else {
+                fail();//{alert(`${this.name} logged in`);}
+                console.log(fail);
+                // console.log(typeof (this.name)); //this的值是执行时根据上下文进行的，此时为string 空
+                // console.log(`${this.name} logged in`);
+                //console.log(fail);
+            }
+        }
+
+        let user = {
+            name: 'John',
+
+            loginOk() {
+                alert(`${this.name} logged in`);
+            },
+
+            loginFail() {
+                alert(`${this.name} failed to log in`);
+            },
+
+        };
+        askPassword(user.loginOk, function () { user.loginFail() });
+    </script>
+</body>
 
 </html>

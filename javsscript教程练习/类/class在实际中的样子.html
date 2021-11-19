@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Myclass {
+            person = "hgj";            
+            constructor(name) {
+                this.person='aa'
+                console.log('where are you?');
+            }
+            methods1() {
+                console.log('这个猜测存在于类构造函数的原型对象中的constructor指向class Myclass函数');
+            }
+            methods2() {
+                console.log('类构造函数的prototype中的constructor不是claas语法糖里面的constructor方法');
+            }
+        }
+      let class_a = new Myclass();
+        console.dir(Myclass);
+        console.log(Myclass.prototype);
+        // console.dir(Myclass)
+        // console.log(Myclass.constructor);
+        // let cla1=new Myclass()
+        // console.dir(cla1)
+        // function aa(){
+           
+        // }
+    </script>
+</body>
+
+</html>
