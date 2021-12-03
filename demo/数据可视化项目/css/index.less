@@ -1,0 +1,139 @@
+/*清除元素默认的内外边距  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /*让所有斜体 不倾斜*/
+  em,
+  i {
+    font-style: normal;
+  }
+  /*去掉列表前面的小点*/
+  li {
+    list-style: none;
+  }
+  /*图片没有边框   去掉图片底侧的空白缝隙*/
+  img {
+    border: 0; /*ie6*/
+    vertical-align: middle;
+  }
+  /*让button 按钮 变成小手*/
+  button {
+    cursor: pointer;
+  }
+  /*取消链接的下划线*/
+  a {
+    color: #666;
+    text-decoration: none;
+    &:hover {
+        color: #e33333;
+      }
+  } 
+  h4 {
+    font-weight: 400;
+  }
+    /* // 实现rem适配 */
+    @media screen and (max-width: 1024px) {
+        html {
+          font-size: 42.66px !important;
+        }
+      }
+      
+      @media screen and (min-width: 1920px) {
+        html {
+          font-size: 80px !important;
+        }
+      }
+    
+  body {
+    background: url(../images/bg.jpg) no-repeat 0 0 / cover;
+    /* background-size: cover; */
+
+  }
+  .viewport{
+    min-width: 1024px;
+    max-width: 1920px;
+    min-height: 768px;
+    margin: 0 auto;
+    padding: 1.1rem .25rem 0;
+    background:url(../images/logo.png) no-repeat 0 0 / contain;
+    display: flex;
+    .column{
+        // 整体三列布局
+        flex:3;
+        &:nth-child(2){
+            flex: 4;
+            // background-color: pink;
+            margin: .4rem .25rem 0;           
+        }
+        .overview{
+            height: 1.375rem;
+            padding-bottom: .5rem;            
+            ul{
+                height: 1.375rem;
+                display: flex;
+                justify-content: space-between;
+                text-align: center;
+                
+                li{
+                    height: .375rem;
+                    h4{
+                        font-size: .35rem ;
+                        color: #fff;
+                        margin:0 0 .1rem .06rem ;
+                    }
+                    span{
+                        font-size: .2rem;
+                        color :#4c9bfd;
+                    };
+                }
+            }
+          
+        }
+    }
+}
+.point {
+    height: 4.25rem;
+  }
+  .point .chart {
+    display: flex;
+    margin-top: 0.3rem;
+    justify-content: space-between;
+  }
+  .point .pie {
+    width: 3.9rem;
+    height: 3rem;
+    margin-left: -0.125rem;
+    background-color: pink;
+  }
+  .point .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.1rem;
+    padding: .45rem .375rem;
+    box-sizing: border-box;
+    background-image: url(../images/rect.png);
+    background-size: cover;
+  }
+  .point h4 {
+    margin-bottom: 0.15rem;
+    font-size: .35rem;
+    color: #fff;
+  }
+  .point span {
+    display: block;
+    color: #4c9bfd;
+    font-size: .2rem;
+  }
+//图片边框类
+  .pannel{
+    border: .1875rem solid transparent;
+    //border-width: .6375rem .5rem .25rem 1.65rem;
+    border-image-source: url(../images/border.png);
+    border-image-slice: 52 38 27 135;
+    border-image-width: .6365rem .5rem .25rem 1.65rem;
+    border-image-repeat: round;
+  }
+  
