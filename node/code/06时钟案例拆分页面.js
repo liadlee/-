@@ -38,7 +38,7 @@ function resolveJS(datastr){
 }
 function resolveHtml(datastr){
     let htmlexp =/(<script>[\s\S]*?<\/script>)/;
-    let html =datastr.replace(/(<style>[\s\S]*?<\/style>\s*)/,'').replace(/<script>[\s\S]*?<\/script>\s*/,'')
+    let html =datastr.replace(/(<style>[\s\S]*?<\/style>\s*)/,'<link rel="stylesheet" href="./index.css">').replace(/<script>[\s\S]*?<\/script>\s*/,'<script src="./index.js"></script>')
     fs.writeFile(path.join(__dirname,'/clock/index.html'),html,(err)=>{
         if(err){
             return console.log(err);
