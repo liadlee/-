@@ -1,0 +1,2 @@
+# nodemodules 是使用npm安装包时自动生成的，相当于包的安装目录，体积较大，且包均开源，不予共享
+/node_modules
