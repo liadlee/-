@@ -1,0 +1,23 @@
+{
+  "name": "myserver_demo",
+  "version": "1.0.0",
+  "description": "熟悉使用node搭建可使用服务器完整流程",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "mysql",
+    "cors",
+    "JWT",
+    "node.js"
+  ],
+  "author": "liadlee",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
