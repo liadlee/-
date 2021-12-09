@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>happy</title>
+    <script src="./lib/vue-2.6.12.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{sayhello}}
+        <button @click='say()'></button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                sayhello:'好久不见，很高兴再次见到你',
+                username:'zhangsan'
+            },
+            methods: {
+                say(){
+                    console.log("不带参数的小括号")
+                }
+            },
+        });
+
+    </script>
+</body>
+</html>
