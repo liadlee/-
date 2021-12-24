@@ -62,7 +62,7 @@ export default {
     login() {
       if (this.username == "admin" && this.password === "123456") {
         localStorage.setItem("token", "Beary ssss");
-        this.$router.push("/MyHome");
+        this.$router.push("/home");
       }
     },
   },

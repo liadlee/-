@@ -12,9 +12,9 @@
 
 <script>
 // 头部区域组件
-import MyHeader from "./subcomponents/MyHeader.vue";
+import MyHeader from "@/components/subcomponents/MyHeader.vue";
 // 左侧边栏组件
-import MyAside from "./subcomponents/MyAside.vue";
+import MyAside from "@/components/subcomponents/MyAside.vue";
 
 export default {
   name: "MyHome",
