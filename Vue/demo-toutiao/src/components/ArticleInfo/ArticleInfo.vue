@@ -1,5 +1,4 @@
 <template>
-  <div>
     <van-cell>
       <!-- 标题区域的插槽 -->
       <template #title>
@@ -7,13 +6,13 @@
           <!-- 标题 -->
           <span>{{title}}</span>
           <!-- 单张图片 -->
-          <img src="https://www.escook.cn/vuebase/pics/1.png" alt="" class="thumb">
+          <img :src="cover.images[0]" alt="" class="thumb" v-if="cover.type === 1">
         </div>
         <!-- 三张图片 -->
-        <div class="thumb-box">
-          <img src="https://www.escook.cn/vuebase/pics/2.png" alt="" class="thumb">
-          <img src="https://www.escook.cn/vuebase/pics/2.png" alt="" class="thumb">
-          <img src="https://www.escook.cn/vuebase/pics/2.png" alt="" class="thumb">
+        <div class="thumb-box" v-if="cover.type === 3">
+          <img :src="cover.images[0]" alt="" class="thumb">
+          <img :src="cover.images[1]" alt="" class="thumb">
+          <img :src="cover.images[2]" alt="" class="thumb">
         </div>
       </template>
       <!-- label 区域的插槽 -->
@@ -25,7 +24,6 @@
         </div>
       </template>
     </van-cell>
-  </div>
 </template>
 <script>
 export default {
@@ -47,6 +45,12 @@ export default {
     comm_count: {
       type: String,
       default: '0'
+    },
+    cover: {
+      type: Object,
+      default: function() {
+        return {}
+      }
     }
   }
 
